@@ -1,8 +1,8 @@
-import { Text, View,TextInput } from 'react-native'
-import React from 'react'
+import { Text, View,TextInput,Button } from 'react-native'
+import React, { useState } from 'react'
 import useFirebasehook from '../../hooks/FirebaseHook'
 
-export default function Main() {
+export default function Main({navigation}) {
   const useFirebase = useFirebasehook('GET')
   const data = Object.values(useFirebase[0])
 
@@ -11,34 +11,18 @@ export default function Main() {
         {data?.map((e,i) => 
           <Text key={e.name + i}>{e.name}</Text>          
         )}
-        <TextInput
-/*         style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number} */
-        placeholder="useless placeholder"
-        keyboardType="numeric"
-      />
-              <TextInput
-/*         style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number} */
-        placeholder="useless placeholder"
-        keyboardType="numeric"
-      />
-              <TextInput
-/*         style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number} */
-        placeholder="useless placeholder"
-        keyboardType="numeric"
-      />
-              <TextInput
-/*         style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number} */
-        placeholder="useless placeholder"
-        keyboardType="numeric"
-      />
+      <Button
+      onPress={() => navigation.navigate('AdminArea')}
+      title="Admin Area"
+      color="#023456"
+      accessibilityLabel=""
+/>
+<Button
+      onPress={() => navigation.navigate('Cart')}
+      title="Cart"
+      color="#023456"
+      accessibilityLabel=""
+/>
       </View>
     )
 }
