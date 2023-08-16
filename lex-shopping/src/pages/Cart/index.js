@@ -1,26 +1,26 @@
 import { Text, View,TextInput,Button } from 'react-native'
 import React, { useState } from 'react'
 import useFirebasehook from '../../hooks/FirebaseHook'
-import PayPalBtn from '../../components/PaypalButton'
 
-export default function Cart() {
+export default function AdminArea() {
   const useFirebase = useFirebasehook('GET')
   const data = Object.values(useFirebase[0])
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState(0)
+  const [currency, setCurrency] = useState('')
+  const [category, setCategory] = useState('')
 
-      const handlePaymentSuccess = () => {
-        // Handle successful payment
-      };
-    
-      const handlePaymentCancel = () => {
-        // Handle payment cancellation
-      };
+
+  const handleProduct = () => {
+
+  }
 
     return (
       <View>
-            <PayPalBtn amount={20} onSuccess={handlePaymentSuccess} onCancel={handlePaymentCancel} />
+      
       <Button
-      onPress={'handleProduct'}
-      title="Cart"
+      onPress={(handleProduct)}
+      title="Pay with Paypal"
       color="#023456"
       accessibilityLabel=""
 />
