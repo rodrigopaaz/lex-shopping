@@ -2,9 +2,9 @@ import {
   View, Button, ScrollView,
 } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
-import ProductCard from '../../components/ProductCard';
 import AppContext from '../../context/Context';
 import styles from './style';
+import ProductCard from '../../components/ProductCard';
 
 export default function Main(fileData) {
   const { navigation } = fileData;
@@ -12,7 +12,6 @@ export default function Main(fileData) {
   const [updatedData, setUpdatedData] = useState([]);
   useEffect(() => {
     setUpdatedData(products);
-    console.log('alterou');
   }, [products]);
 
   return (
@@ -32,9 +31,9 @@ export default function Main(fileData) {
           accessibilityLabel=""
         />
         <Button
+          style={styles.cartBtn}
           onPress={() => navigation.navigate('Cart')}
           title="Cart"
-          color="#023456"
           accessibilityLabel=""
         />
       </View>

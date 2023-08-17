@@ -1,6 +1,7 @@
 import { View, Text, Button } from 'react-native';
 import React from 'react';
-import useAsyncStorage from '../hooks/AsyncStorageHook';
+import useAsyncStorage from '../../hooks/AsyncStorageHook';
+import styles from './style';
 
 export default function ProductCard(data) {
   const { product } = data;
@@ -9,7 +10,7 @@ export default function ProductCard(data) {
   } = product;
   const { addData } = useAsyncStorage();
   return (
-    <View>
+    <View style={styles}>
       <Text>{name}</Text>
       <Text>{category}</Text>
       <Text>{price}</Text>

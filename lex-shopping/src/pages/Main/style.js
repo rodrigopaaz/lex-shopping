@@ -2,15 +2,19 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   main: {
-    display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    height: '500px',
     justifyContent: 'space-evenly',
     alignItems: 'center',
+    padding: 10,
   },
   secondary: {
-    display: 'flex',
+    margin: 1,
+  },
+  cartBtn: {
+    position: 'absolute',
+    bottom: 0,
+    left: 10,
   },
 });
 

@@ -50,7 +50,7 @@ export default function CreateProduct(fileData) {
           await getAllData();
         }}
         title="Create Product"
-        color="#green"
+        color="#023456"
         accessibilityLabel=""
       />
       <Button

@@ -1,1 +1,3 @@
-const styles = StyleSheet.create({first})
+const styles = StyleSheet.create({ first: '' });
+
+export default styles;

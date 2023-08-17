@@ -18,13 +18,15 @@ const useAsyncStorage = () => {
 
     getAllData();
   }, []);
-  const addData = (product) => {
+  const addData = async (product) => {
     try {
-      const id = getData.length + 1;
-      const addToStorage = [...getData, { id, ...product }];
+      const data = await AsyncStorage.getItem('products');
+      const lastItems = JSON.parse(data) || [];
+      const addToStorage = [...lastItems, product];
       AsyncStorage.setItem('products', JSON.stringify(addToStorage));
+      setGetData(addToStorage);
     } catch (error) {
-      console.log('there is an error', error);
+      console.log('Error adding data to AsyncStorage', error);
     }
   };
 
@@ -33,7 +35,7 @@ const useAsyncStorage = () => {
       const index = getData.findIndex((p) => p.id === product.id);
       const update = getData;
       update[index] = product;
-      setGetData(getData.splice(index, 1));
+      setGetData(update);
       AsyncStorage.setItem('products', JSON.stringify(update));
     } catch (error) {
       console.log('there is an error', error);
@@ -50,8 +52,13 @@ const useAsyncStorage = () => {
     }
   };
 
+  const clearData = async () => {
+    AsyncStorage.clear();
+    setGetData([]);
+  };
+
   return {
-    getData, addData, removeData, updateData,
+    getData, addData, removeData, updateData, clearData,
   };
 };
 
