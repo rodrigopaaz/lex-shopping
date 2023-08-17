@@ -103,7 +103,7 @@ export default function UpdateProduct({navigation}) {
               <TextInput
 /*         style={styles.input}*/
         onChangeText={(value) => setPrice(value)}
-        value={price} 
+        value={price.toString()} 
         placeholder="Product Price"
         keyboardType="numeric"
       />
@@ -122,7 +122,7 @@ export default function UpdateProduct({navigation}) {
         keyboardType="string"
       />
       <Button
-      onPress={() => updateData({id, name, price, category, currency})}
+      onPress={() => updateData({id, name, price: Number(price), category, currency})}
       title="Save changes"
       color="#345"
       accessibilityLabel=""

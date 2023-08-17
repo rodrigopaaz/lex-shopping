@@ -1,6 +1,6 @@
 const Username = 'AddtjRiXOS97Jo3FQKfK-OLFwuhZASGggKroVfupdko_vkjmxqcT82DwhzdtPpPlVXeUCxbn9dNen0Jx';
 
-const usePayPalData = () => {
+const usePayPalData = async (price) => {
 
   const bodyData = {
     intent: 'CAPTURE',
@@ -8,12 +8,11 @@ const usePayPalData = () => {
       {
         amount: {
           currency_code: 'BRL',
-          value: '12.53',
+          value: price,
         },
       },
     ],
   };
-  const fetchPayPalData = async () => {
     try {            
       const request = await fetch('https://api-m.sandbox.paypal.com/v2/checkout/orders', {
         method: 'POST',
@@ -24,15 +23,10 @@ const usePayPalData = () => {
         body: JSON.stringify(bodyData),
       });
       const response = await request.json()
-      console.log(response)
+      return response
     } catch (error) {
       console.error(error);
     } 
-  };
-  
-  const data = fetchPayPalData()
-  
-  return data
 
 };
 

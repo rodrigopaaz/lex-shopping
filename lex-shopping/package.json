@@ -21,7 +21,8 @@
     "react-native": "0.72.3",
     "react-native-paypal": "^4.1.0",
     "react-native-paypal-wrapper": "^1.3.2",
-    "react-native-web": "~0.19.6"
+    "react-native-web": "~0.19.6",
+    "react-native-webview": "13.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

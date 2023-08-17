@@ -6,6 +6,7 @@ import AdminArea from './src/pages/AdminArea';
 import Cart from './src/pages/Cart';
 import CreateProduct from './src/pages/CreateProduct';
 import UpdateProduct from './src/pages/UpdateProduct';
+import PaypalPage from './src/pages/PaypalPage';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,10 @@ function App() {
         <Stack.Screen 
         name='UpdateProduct'
         component={UpdateProduct}
+        />
+        <Stack.Screen 
+        name='PaypalPage'
+        component={PaypalPage}
         />
       </Stack.Navigator>
     </NavigationContainer>

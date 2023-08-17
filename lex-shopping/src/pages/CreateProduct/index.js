@@ -38,7 +38,7 @@ export default function CreateProduct({navigation}) {
               <TextInput
 /*         style={styles.input}*/
         onChangeText={(value) => setPrice(value)}
-        value={price} 
+        value={price.toString()} 
         placeholder="Product Price"
         keyboardType="numeric"
       />
@@ -56,10 +56,6 @@ export default function CreateProduct({navigation}) {
         placeholder="Product Currency"
         keyboardType="string"
       />
-      <Text>{name}</Text>
-      <Text>{category}</Text>
-      <Text>{currency}</Text>
-      <Text>{price}</Text>
       <Button
       onPress={() => postData({name, price, category, currency})}
       title="Create Product"

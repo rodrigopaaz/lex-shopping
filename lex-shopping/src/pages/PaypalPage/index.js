@@ -1,25 +1,23 @@
-import { Text, View,TextInput,Button } from 'react-native'
-import React, { useState } from 'react'
-import useFirebasehook from '../../hooks/FirebaseHook'
-import PayPalIntegration from '../../components/Paypalbutton'
-import usePayPalData from '../../utils/PayPal'
+import * as React from 'react';
+import { WebView } from 'react-native-webview';
+import { StyleSheet } from 'react-native';
+import Constants from 'expo-constants';
+import { useRoute } from '@react-navigation/native';
 
-export default function AdminArea() {
-  const useFirebase = useFirebasehook('GET')
-  const data = Object.values(useFirebase[0])
-  const [name, setName] = useState('')
-  const [price, setPrice] = useState(0)
-  const [currency, setCurrency] = useState('')
-  const [category, setCategory] = useState('')
-
-    return (
-      <View>
-      <Button
-      onPress={() => usePayPalData()}
-      title='Pay'
-      >
-
-      </Button>
-      </View>
-    )
+export default function PaypalPage() {
+  const route = useRoute();
+  const {path} = route.params
+  return (
+    <WebView
+      style={styles.container}
+      source={{ uri: path }}
+    />
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: Constants.statusBarHeight,
+  },
+});
