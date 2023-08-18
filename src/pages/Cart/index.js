@@ -1,12 +1,14 @@
 import { Text, View, Button } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import usePayPalData from '../../utils/PayPal';
 import useAsyncStorage from '../../hooks/AsyncStorageHook';
 import styles from './style';
+import AppContext from '../../context/Context';
 
 export default function Cart() {
   const navigation = useNavigation();
+  const { paymentStatus, setPaymentStatus } = useContext(AppContext);
   const { getData } = useAsyncStorage();
   const [cart, setCart] = useState([]);
   const { removeData, clearData } = useAsyncStorage();
@@ -20,6 +22,21 @@ export default function Cart() {
       path: getPath.href,
     });
   };
+
+  const clearCart = () => {
+    clearData();
+    setTotalValue(0);
+    setCart([]);
+  };
+
+  useEffect(() => {
+    if (paymentStatus) {
+      clearCart();
+      setPaymentStatus(false);
+      navigation.navigate('Cart');
+    }
+  }, [paymentStatus]);
+
   useEffect(() => {
     setCart(getData);
     const value = getData.reduce((acc, curr) => acc + Number(curr.price), 0);
@@ -64,11 +81,7 @@ export default function Cart() {
         title="Pay"
       />
       <Button
-        onPress={() => {
-          clearData();
-          setTotalValue(0);
-          setCart([]);
-        }}
+        onPress={clearCart}
         title="Clear"
       />
     </View>
