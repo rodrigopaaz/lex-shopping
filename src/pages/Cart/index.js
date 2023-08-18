@@ -1,5 +1,5 @@
 import {
-  Text, View, Button,
+  Text, View, Button, TouchableOpacity, ActivityIndicator,
 } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
@@ -15,7 +15,9 @@ export default function Cart() {
   const [cart, setCart] = useState([]);
   const { removeData, clearData } = useAsyncStorage();
   const [totalValue, setTotalValue] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const handleNavigation = async () => {
+    setIsLoading(true);
     const token = await usePayPalData.generateToken();
     const url = await usePayPalData.createOrder(cart, totalValue, token);
 
@@ -23,6 +25,7 @@ export default function Cart() {
     navigation.navigate('PaypalPage', {
       path: getPath.href,
     });
+    setIsLoading(false);
   };
 
   const clearCart = () => {
@@ -66,7 +69,7 @@ export default function Cart() {
               title="x"
               onPress={() => {
                 const removed = cart.filter((e) => e.id !== p.id);
-                setTotalValue(totalValue - p.price);
+                setTotalValue(Number((totalValue - p.price).toFixed(2)));
                 setCart(removed);
                 removeData(p.id);
               }}
@@ -81,10 +84,14 @@ export default function Cart() {
           {totalValue}
           {' '}
         </Text>
-        <Button
+        <TouchableOpacity
+          style={styles.payText}
           onPress={handleNavigation}
-          title="Pay"
-        />
+          title="PayPal"
+        >
+          {isLoading ? <ActivityIndicator size="small" /> : <Text>Paypal</Text>}
+
+        </TouchableOpacity>
         <Button
           onPress={clearCart}
           title="Clear"

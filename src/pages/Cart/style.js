@@ -32,6 +32,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 5,
   },
+  payText: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'orange',
+    height: 50,
+  },
 });
 
 export default styles;

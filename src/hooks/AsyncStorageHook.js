@@ -11,8 +11,9 @@ const useAsyncStorage = () => {
         if (data !== null) {
           setGetData(JSON.parse(data));
         }
+        return null;
       } catch (error) {
-        console.log('The cart is empty');
+        return error;
       }
     };
 
@@ -25,8 +26,9 @@ const useAsyncStorage = () => {
       const addToStorage = [...lastItems, product];
       AsyncStorage.setItem('products', JSON.stringify(addToStorage));
       setGetData(addToStorage);
+      return null;
     } catch (error) {
-      console.log('Error adding data to AsyncStorage', error);
+      return error;
     }
   };
 
@@ -37,8 +39,9 @@ const useAsyncStorage = () => {
       update[index] = product;
       setGetData(update);
       AsyncStorage.setItem('products', JSON.stringify(update));
+      return null;
     } catch (error) {
-      console.log('there is an error', error);
+      return error;
     }
   };
 
@@ -47,8 +50,9 @@ const useAsyncStorage = () => {
       const removeItem = getData.filter((p) => p.id !== id);
       setGetData(removeItem);
       AsyncStorage.setItem('products', JSON.stringify(removeItem));
+      return null;
     } catch (error) {
-      console.log('there is an error', error);
+      return error;
     }
   };
 

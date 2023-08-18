@@ -36,7 +36,7 @@ export default function Main(fileData) {
           <Button
             onPress={() => navigation.navigate('AdminArea')}
             title="Admin Area"
-            color="#023456"
+            color="#321503"
             activeOpacity={0.7}
             accessibilityLabel=""
           />
@@ -44,6 +44,7 @@ export default function Main(fileData) {
             style={styles.cartBtn}
             onPress={() => navigation.navigate('Cart')}
             title="Cart"
+            color="#6A4108"
             activeOpacity={0.2}
             accessibilityLabel=""
           />
