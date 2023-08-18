@@ -1,18 +1,23 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+  main: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    height: 560,
+  },
   table: {
-    backgroundColor: '#EEEAEC',
-    padding: 10,
-    margin: 10,
+    padding: 2,
+    margin: 1,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 5,
+    padding: 2,
   },
   cellHeader: {
     fontWeight: 'bold',
+    fontSize: 10,
     flex: 1,
     textAlign: 'center',
   },

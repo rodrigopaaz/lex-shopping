@@ -2,6 +2,11 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   main: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    height: 560,
+  },
+  products: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
