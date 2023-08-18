@@ -19,7 +19,7 @@ export default function Main(fileData) {
       <View style={styles.main}>
         {updatedData?.map((e) => (
           <View>
-            <ProductCard key={e.id} product={e} />
+            <ProductCard key={e.id + e.name} product={e} />
           </View>
         ))}
       </View>

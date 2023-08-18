@@ -14,6 +14,7 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <AppProvider>
+
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen
@@ -40,6 +41,7 @@ function App() {
             name="PaypalPage"
             component={PaypalPage}
           />
+
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>

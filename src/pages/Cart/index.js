@@ -12,9 +12,12 @@ export default function Cart() {
   const { removeData, clearData } = useAsyncStorage();
   const [totalValue, setTotalValue] = useState(0);
   const handleNavigation = async () => {
-    const url = await usePayPalData(totalValue);
+    const token = await usePayPalData.generateToken();
+    const url = await usePayPalData.createOrder(cart, totalValue, token);
+
+    const getPath = url.links.find((e) => e.rel === 'approve');
     navigation.navigate('PaypalPage', {
-      path: url.links[1].href,
+      path: getPath.href,
     });
   };
   useEffect(() => {
